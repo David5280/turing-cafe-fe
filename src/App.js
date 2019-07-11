@@ -13,7 +13,7 @@ class App extends Component {
 
   componentDidMount() {
     getReservations()
-    .then(results => this.setState(results))
+    .then(results => this.setState({ reservations: results }))
     .catch(error => this.setState({ error: error }));
     
   }
@@ -26,7 +26,7 @@ class App extends Component {
 
         </div>
         <div className='resy-container'>
-          <Reservations reservations={this.state}/>
+          ({(this.state.reservations.length) && <Reservations reservations={this.state.reservations}/>})
         </div>
       </div>
     )
