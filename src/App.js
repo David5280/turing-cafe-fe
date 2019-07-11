@@ -23,6 +23,11 @@ class App extends Component {
     postNewReservation(newRes);
   }
 
+  cancelReservation = (e) => {
+    const updatedData = this.state.reservations.filter(res => res.id === e.target.id)
+    console.log(updatedData)
+  }
+
   render() {
     return (
       <div className="App">
@@ -31,7 +36,7 @@ class App extends Component {
           <ResForm addRes={this.addReservation} resLength={this.state.reservations.length}/>
         </div>
         <div className='resy-container'>
-          ({(this.state.reservations.length) && <Reservations reservations={this.state.reservations}/>})
+          ({(this.state.reservations.length) && <Reservations reservations={this.state.reservations} cancelRes={this.cancelReservation} />})
         </div>
       </div>
     )
