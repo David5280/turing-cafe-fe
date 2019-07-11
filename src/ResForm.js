@@ -19,12 +19,16 @@ export class ResForm extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    const data = this.state;
-    console.log(data)
-    // fetch('/api/form-submit-url', {
-    //   method: 'POST',
-    //   body: data,
-    // });
+    this.props.addRes({...this.state, id: Date.now(), number: this.props.resLength});
+    this.clearInputs();
+  }
+
+  clearInputs = () => {
+    this.setState({
+      name: '',
+      date: '',
+      time: ''
+    })
   }
 
   render() {
