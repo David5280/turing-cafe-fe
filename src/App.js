@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { getReservations } from './apiCalls';
+import { getReservations, postNewReservation } from './apiCalls';
 import Reservations from './Reservations';
 import ResForm from './ResForm';
 import './App.css';
@@ -20,6 +20,7 @@ class App extends Component {
 
   addReservation = (newRes) => {
     this.setState({ reservations:  [...this.state.reservations, newRes]})
+    postNewReservation(newRes);
   }
 
   render() {

@@ -7,17 +7,19 @@ export const getReservations = () => {
   .catch(error => error.message);
 }
 
-export const postNewReservation = ({ name, date, time, id }) => {
-  const options = {
-    method: 'post',
-    body: {
-    'name': 
-    'date':
-    'time':
-    'id':
-    'key':
+export const postNewReservation = ({ name, date, time, id, number }) => {
+  fetch('//localhost:3001/api/v1/reservations', {
+    method: 'POST',
+    body: JSON.stringify({
+      name: name,
+      date: date,
+      time: time,
+      is: id,
+      number: number
+    }),
+    headers: {
+      'content-type': 'application/json'
     }
-  }
-  fetch('http://localhost:3001/api/v1/reservations', options)
+  });
 }
 
